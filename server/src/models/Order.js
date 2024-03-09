@@ -14,6 +14,7 @@ const Order = new mongoose.Schema({
         price: {type: Number, required: true},
         quantity: {type: Number, required: true},
     }],
+    coupon: {type: String},
     total_price: {type: Number, required: true},
 });
 

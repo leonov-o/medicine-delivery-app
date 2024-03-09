@@ -4,7 +4,6 @@ import Order from "../models/Order.js";
 class OrderService {
     async create(order) {
         const orderId = await Order.countDocuments({});
-        console.log(orderId)
         const createdOrder = await Order.create({...order, order_id: orderId + 1});
         return createdOrder;
     }
