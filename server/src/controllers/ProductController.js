@@ -5,23 +5,25 @@ class ProductController {
         try {
             const product = await ProductService.create(req.body, req.files.image);
             res.status(200).json(product);
-        }catch (e) {
+        } catch (e) {
             res.status(500).json(e.message);
         }
     }
+
     async getAllByShopId(req, res) {
         try {
             const product = await ProductService.getAllByShopId(req.params.id);
             res.status(200).json(product);
-        }catch (e) {
+        } catch (e) {
             res.status(500).json(e.message);
         }
     }
+
     async getById(req, res) {
         try {
             const product = await ProductService.getById(req.params.id)
             res.status(200).json(product);
-        }catch (e) {
+        } catch (e) {
             res.status(500).json(e.message);
         }
     }

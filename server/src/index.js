@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import router from './routes/router.js';
 import fileUpload from 'express-fileupload';
 
-
 const app = express();
 app.use(express.json());
 app.use(express.static('static'));
@@ -24,3 +23,4 @@ async function startApp() {
 
 
 startApp();
+

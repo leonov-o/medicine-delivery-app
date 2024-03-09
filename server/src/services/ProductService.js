@@ -3,8 +3,7 @@ import FileService from "./FileService.js";
 
 class ProductService {
     async create(product, image) {
-        const fileName = FileService.saveFile(image);
-        const createdProduct = await Product.create({...product, image: fileName});
+        const createdProduct = await Product.create({...product, image: image ? FileService.saveFile(image) : null});
         return createdProduct;
     }
 
