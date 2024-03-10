@@ -3,8 +3,8 @@ import Order from "../models/Order.js";
 
 class OrderService {
     async create(order) {
-        const orderId = await Order.countDocuments({});
-        const createdOrder = await Order.create({...order, order_id: orderId + 1});
+        const maxOrderId = await Order.find().sort({ order_id: -1 }).limit(1);
+        const createdOrder = await Order.create({...order, order_id: maxOrderId[0].order_id + 1});
         return createdOrder;
     }
 
