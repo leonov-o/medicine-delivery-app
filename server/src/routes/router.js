@@ -20,6 +20,6 @@ router.get("/orders/:id", OrderController.getById)
 
 router.post("/coupons", CouponController.create)
 router.get("/coupons", CouponController.getAll)
-router.get("/coupons/:code", CouponController.getByCode)
+router.get("/coupon/:code", CouponController.getByCode)
 
 export default router;
