@@ -9,7 +9,7 @@ export const ProductList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (selected){
+        if (selected) {
             dispatch(fetchProducts(selected));
         }
     }, [selected]);
@@ -25,9 +25,10 @@ export const ProductList = () => {
                 }
                 <div className="flex flex-wrap">
                     {
-                       isLoading > 0
-                           ? Array.from({length: 10}).map(() => <SkeletonItem className="mr-5 mb-5 w-72 h-60 rounded bg-gray-100"/>)
-                           :products.map(product => <ProductCard key={product._id} product={product}/>)
+                        isLoading > 0
+                            ? Array.from({length: 10}).map((_, index) => <SkeletonItem key={index}
+                                                                                       className="mr-5 mb-5 h-60 w-72 rounded bg-gray-100"/>)
+                            : products.map(product => <ProductCard key={product._id} product={product}/>)
                     }
                 </div>
             </div>

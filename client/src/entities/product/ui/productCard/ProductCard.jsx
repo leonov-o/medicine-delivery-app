@@ -1,12 +1,10 @@
 import React from 'react';
-import clsx from "clsx";
-import {useSelector} from "react-redux";
 import {SERVER_URL} from "../../../../app/config.js";
-import {Button, textCut} from "../../../../shared/index.js";
+import {textCut} from "../../../../shared/";
+import {AddToCart} from "../../../../features/";
 
 export const ProductCard = ({product}) => {
-    const {selected} = useSelector(state => state.shops);
-    const {id, name, description, price, available, image} = product;
+    const {name, description, price, available, image} = product;
 
 
     return (
@@ -23,9 +21,7 @@ export const ProductCard = ({product}) => {
             <div className="h-12 text-justify font-thin">{textCut(description, 58)}</div>
             <div className="mt-4 flex justify-between">
                 <div className="mt-3 font-thin">Available: {available} pcs.</div>
-                <Button>
-                    Add to cart
-                </Button>
+                <AddToCart product={product}/>
             </div>
 
         </div>
