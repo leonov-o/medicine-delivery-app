@@ -1,4 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
+import {LayoutPage, ShopPage} from "../../../pages";
 
 export const router = createBrowserRouter([
     {
@@ -6,6 +7,22 @@ export const router = createBrowserRouter([
         element: <LayoutPage/>,
         // errorElement: <NotFoundPage/>,
         children: [
+            {
+                index: true,
+                element: <ShopPage/>
+            },
+            {
+                path: "/coupons",
+                element: <div>Coupons</div>
+            },
+            {
+                path: "/history",
+                element: <div>History</div>
+            },
+            {
+                path: "/shopping-cart",
+                element: <div>Shopping Cart</div>
+            },
 
         ]
     }
