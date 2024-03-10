@@ -17,11 +17,7 @@ export const AddToCart = ({product}) => {
             return;
         }
         console.log(product)
-        dispatch(addToCart({
-            _id: product._id,
-            shop_id: product.shop_id,
-            quantity: 1
-        }));
+        dispatch(addToCart({...product, quantity: 1}));
         setButtonText("Added");
         setTimeout(() => {
             setButtonText("Add to cart");

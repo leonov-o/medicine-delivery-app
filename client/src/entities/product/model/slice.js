@@ -7,6 +7,7 @@ const productsSlice = createSlice({
         products: [],
         favourites: [],
         cart: [],
+        coupon: '',
         isLoading: false,
         error: ''
     },
@@ -31,8 +32,20 @@ const productsSlice = createSlice({
                 state.cart.push(action.payload);
             }
         },
+        changeQuantity(state, action) {
+            const product = state.cart.find(product => product._id === action.payload._id);
+            if (product) {
+                product.quantity = action.payload.quantity;
+            }
+        },
+        setCoupon(state, action) {
+            state.coupon = action.payload;
+        },
         deleteFromCart(state, action) {
             state.cart = state.cart.filter(product => product._id !== action.payload);
+        },
+        resetCart(state) {
+            state.cart = [];
         },
         addToFavourites(state, action) {
             state.favourites.push(action.payload);
@@ -49,6 +62,9 @@ export const {
     productsFetchingSuccess,
     productsFetchingError,
     addToCart,
+    resetCart,
+    setCoupon,
+    changeQuantity,
     deleteFromCart,
     addToFavourites,
     deleteFromFavourites

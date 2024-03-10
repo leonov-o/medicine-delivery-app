@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
-import {LayoutPage, ShopPage} from "../../../pages";
+import {CartPage, LayoutPage, ShopPage} from "../../../pages";
 
 export const router = createBrowserRouter([
     {
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/shopping-cart",
-                element: <div>Shopping Cart</div>
+                element: <CartPage/>
             },
 
         ]

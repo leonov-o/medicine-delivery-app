@@ -45,7 +45,7 @@ export const Header = () => {
                     {
                         cart.length > 0
                             ? <div
-                                className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-thin text-white bg-red-500 border-white rounded-full -top-3 -end-2 dark:border-gray-900">
+                                className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-thin text-white bg-red-500 border-white rounded-full -top-3 -end-2 dark:border-gray-900 z-10">
                                 {cart.length}
                             </div>
                             : null
