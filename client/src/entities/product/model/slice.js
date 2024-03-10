@@ -6,7 +6,7 @@ const productsSlice = createSlice({
     initialState: {
         products: [],
         favourites: [],
-        cart: [],
+        cart: localStorage.cart && localStorage.cart.length > 0 ? JSON.parse(localStorage.cart) : [],
         coupon: '',
         isLoading: false,
         error: ''
@@ -31,21 +31,25 @@ const productsSlice = createSlice({
             }else{
                 state.cart.push(action.payload);
             }
+            localStorage.setItem("cart", JSON.stringify(state.cart));
         },
         changeQuantity(state, action) {
             const product = state.cart.find(product => product._id === action.payload._id);
             if (product) {
                 product.quantity = action.payload.quantity;
             }
+            localStorage.setItem("cart", JSON.stringify(state.cart));
         },
         setCoupon(state, action) {
             state.coupon = action.payload;
         },
         deleteFromCart(state, action) {
             state.cart = state.cart.filter(product => product._id !== action.payload);
+            localStorage.setItem("cart", JSON.stringify(state.cart));
         },
         resetCart(state) {
             state.cart = [];
+            localStorage.setItem("cart", JSON.stringify(state.cart));
         },
         addToFavourites(state, action) {
             state.favourites.push(action.payload);

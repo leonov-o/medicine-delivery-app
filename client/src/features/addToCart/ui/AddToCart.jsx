@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {Button} from "../../../shared/";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addToCart} from "../../../entities/product/";
 
 export const AddToCart = ({product}) => {
+    const shops = useSelector(state => state.shops.shops);
     const [buttonText, setButtonText] = useState("Add to cart");
     const [error, setError] = useState(null);
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const AddToCart = ({product}) => {
             return;
         }
         console.log(product)
-        dispatch(addToCart({...product, quantity: 1}));
+        dispatch(addToCart({...product, quantity: 1, shopName: shops.find((shop) => shop._id === product.shop_id).name}));
         setButtonText("Added");
         setTimeout(() => {
             setButtonText("Add to cart");

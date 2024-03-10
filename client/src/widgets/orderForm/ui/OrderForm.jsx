@@ -36,25 +36,25 @@ export const OrderForm = () => {
         onSubmit: async (values) => {
             const {name, email, phone, address} = values;
             setIsProcessing(true);
+            const body = {
+                customer_data: {
+                    name,
+                    email,
+                    phone,
+                    address
+                },
+                order_details: [
+                    ...cart.map((item) => ({product_id: item._id, quantity: item.quantity})),
+                ],
+                coupon
+            };
+            console.log(body)
             const response = await fetch(`${SERVER_URL}/api/order`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(
-                    {
-                        customer_data: {
-                            name,
-                            email,
-                            phone,
-                            address
-                        },
-                        order_details: [
-                            ...cart.map((item) => ({product_id: item._id, quantity: item.quantity})),
-                        ],
-                        coupon
-                    }
-                )
+                body: JSON.stringify(body)
             })
             if (response.ok) {
                 formik.resetForm();

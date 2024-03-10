@@ -1,7 +1,8 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {CartItem, setCoupon} from "../../../entities/product/index.js";
+import {CartItem, resetCart, setCoupon} from "../../../entities/product/index.js";
 import {SERVER_URL} from "../../../app/config.js";
+import {TrashIcon} from "@heroicons/react/24/outline/index.js";
 
 export const CartList = () => {
     const cart = useSelector(state => state.products.cart);
@@ -25,7 +26,12 @@ export const CartList = () => {
 
     return (
         <div className="grow px-8">
-            <div className="mb-4 text-center text-2xl">Shopping Cart</div>
+            <div className="flex justify-center items-center mb-4">
+                <div className=" text-center text-2xl">Shopping Cart</div>
+                <div className="w-6 h-6 ml-2 hover:scale-110" onClick={() => dispatch(resetCart())}>
+                    <TrashIcon/>
+                </div>
+            </div>
 
             <div className="flex items-center justify-between bg-gray-100 mt-3 rounded-lg p-3">
                 <div className="flex grow">

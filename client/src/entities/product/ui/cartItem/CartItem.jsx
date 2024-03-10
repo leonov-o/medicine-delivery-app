@@ -32,7 +32,7 @@ export const CartItem = ({item}) => {
                         {textCut(item.description, 50)}
                     </div>
                     <div className="font-thin text-lg">
-                        From: {shops.find((shop) => shop._id === item.shop_id).name}
+                        From: {item.shopName}
                     </div>
                 </div>
             </div>
