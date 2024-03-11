@@ -6,13 +6,7 @@ import fileUpload from 'express-fileupload';
 import cors from 'cors'
 
 const app = express();
-app.use(cors(
-    {
-        origin: ["*"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-))
+app.use(cors());
 app.use(express.json());
 app.use(express.static('static'));
 app.use(fileUpload({}));
