@@ -29,7 +29,7 @@ export const CouponPage = () => {
                         ? Array.from({length: 5}).map((_, index) => <SkeletonItem key={index}
                                                                                    className="w-72 h-56 bg-green-100 p-4 rounded-md mr-4 mb-4"/>)
                         : coupons.map(coupon => (
-                            <CouponCard key={coupon.id} coupon={coupon}/>
+                            <CouponCard key={coupon._id} coupon={coupon}/>
                         ))
                 }
             </div>

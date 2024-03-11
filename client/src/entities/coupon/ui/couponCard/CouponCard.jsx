@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button} from "../../../../shared/index.js";
-import {CopyButton} from "../../../../features/index.js";
+import {CopyButton} from "../../../../features/";
 
 export const CouponCard = ({coupon}) => {
     const {title, description, code} = coupon;
