@@ -4,8 +4,9 @@ import {createSlice} from "@reduxjs/toolkit";
 const productsSlice = createSlice({
     name: "products",
     initialState: {
+        sortBy: null,
         products: [],
-        favourites: [],
+        favourites: localStorage.favourites && localStorage.favourites.length > 0 ? JSON.parse(localStorage.favourites) : [],
         cart: localStorage.cart && localStorage.cart.length > 0 ? JSON.parse(localStorage.cart) : [],
         coupon: '',
         isLoading: false,
@@ -18,7 +19,14 @@ const productsSlice = createSlice({
         productsFetchingSuccess(state, action) {
             state.isLoading = false;
             state.error = '';
-            state.products = action.payload;
+            state.products = action.payload.sort((a, b) => {
+                const aIsFavorite = state.favourites.includes(a._id);
+                const bIsFavorite = state.favourites.includes(b._id);
+                if (aIsFavorite === bIsFavorite) {
+                    return 0;
+                }
+                return aIsFavorite ? -1 : 1;
+            });
         },
         productsFetchingError(state, action) {
             state.isLoading = false;
@@ -53,9 +61,27 @@ const productsSlice = createSlice({
         },
         addToFavourites(state, action) {
             state.favourites.push(action.payload);
+            localStorage.setItem("favourites", JSON.stringify(state.favourites));
         },
         deleteFromFavourites(state, action) {
-            state.favourites = state.favourites.filter(product => product._id !== action.payload);
+            state.favourites = state.favourites.filter(id => id !== action.payload);
+            localStorage.setItem("favourites", JSON.stringify(state.favourites));
+        },
+        sorting(state, action) {
+            state.sortBy = action.payload
+            if (state.sortBy === 'cheaper') {
+                state.products.sort((a, b) => a.price - b.price);
+            } else if (state.sortBy === 'dearer') {
+                state.products.sort((a, b) => b.price - a.price);
+            }
+            state.products.sort((a, b) => {
+                const aIsFavorite = state.favourites.includes(a._id);
+                const bIsFavorite = state.favourites.includes(b._id);
+                if (aIsFavorite === bIsFavorite) {
+                    return 0;
+                }
+                return aIsFavorite ? -1 : 1;
+            });
         }
     }
 });
@@ -71,5 +97,6 @@ export const {
     changeQuantity,
     deleteFromCart,
     addToFavourites,
-    deleteFromFavourites
+    deleteFromFavourites,
+    sorting
 } = productsSlice.actions

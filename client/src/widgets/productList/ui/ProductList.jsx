@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProducts, ProductCard} from "../../../entities/product/index.js";
 import {SkeletonItem} from "../../../shared/index.js";
+import {SortProducts} from "../../../features/index.js";
 
 export const ProductList = () => {
     const {selected} = useSelector(state => state.shops);
@@ -17,6 +18,7 @@ export const ProductList = () => {
     return (
         <div className="grow px-8">
             <div className="mb-4 text-center text-2xl">Products</div>
+            <SortProducts/>
             <div className="overflow-y-auto h-[810px]">
                 {
                     !selected && !isLoading && <div className="mt-10 text-center text-3xl font-thin">

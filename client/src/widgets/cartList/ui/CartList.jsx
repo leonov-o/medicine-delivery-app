@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {CartItem, resetCart, setCoupon} from "../../../entities/product/index.js";
+import {CartItem, resetCart, setCoupon} from "../../../entities";
 import {TrashIcon} from "@heroicons/react/24/outline/index.js";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;

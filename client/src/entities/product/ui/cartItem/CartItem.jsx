@@ -3,12 +3,12 @@ import {textCut} from "../../../../shared/index.js";
 import {useDispatch, useSelector} from "react-redux";
 import {changeQuantity, deleteFromCart} from "../../model/index.js";
 import {XMarkIcon} from "@heroicons/react/24/outline/index.js";
+import {DeleteFromCart} from "../../../../features/index.js";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const CartItem = ({item}) => {
     const [totalPrice, setTotalPrice] = useState(item.price * item.quantity);
-    const shops = useSelector(state => state.shops.shops);
     const dispatch = useDispatch();
 
     const onChangeQuantity = (value) => {
@@ -47,9 +47,7 @@ export const CartItem = ({item}) => {
             <div className="w-24 text-center">
                 {totalPrice} UAH
             </div>
-            <div onClick={() => dispatch(deleteFromCart(item._id))}>
-                <XMarkIcon className="h-6 w-6 cursor-pointer"/>
-            </div>
+            <DeleteFromCart id ={item._id} />
         </div>
     );
 };

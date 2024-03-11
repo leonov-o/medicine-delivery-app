@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {useFormik} from "formik";
 import * as Yup from 'yup';
-import {Button, Loader} from "../../../shared/";
 import clsx from "clsx";
+import {Button, Loader} from "../../../shared/";
 import {useDispatch, useSelector} from "react-redux";
 import {resetCart} from "../../../entities/product/";
 
