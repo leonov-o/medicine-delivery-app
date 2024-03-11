@@ -8,7 +8,7 @@ import cors from 'cors'
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static('static'));
+app.use(express.static('.vercel_build_output/static'));
 app.use(fileUpload({}));
 app.use('/api', router);
 
