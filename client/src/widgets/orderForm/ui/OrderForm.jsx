@@ -1,27 +1,25 @@
-import React, {useState} from 'react';
-import {useFormik} from "formik";
+import React from 'react';
 import * as Yup from 'yup';
-import clsx from "clsx";
-import {Button, Loader} from "../../../shared/";
+import {Form} from "../../../shared/";
 import {useDispatch, useSelector} from "react-redux";
 import {resetCart} from "../../../entities/product/";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const OrderForm = () => {
-    const [isProcessing, setIsProcessing] = useState(false);
     const {cart, coupon} = useSelector(state => state.products)
     const dispatch = useDispatch();
 
     const fields = ['Name', 'Email', 'Phone', 'Address'];
-    const formik = useFormik({
-        initialValues: {
+
+        const initialValues = {
             name: '',
             email: '',
             phone: '',
             address: '',
-        },
-        validationSchema: Yup.object({
+        }
+
+        const validationSchema = Yup.object({
             name: Yup.string()
                 .required('Required'),
             email: Yup.string()
@@ -33,10 +31,10 @@ export const OrderForm = () => {
                 .required('Required'),
             address: Yup.string()
                 .required('Required'),
-        }),
-        onSubmit: async (values) => {
+        });
+
+        const onSubmit = async (values) => {
             const {name, email, phone, address} = values;
-            setIsProcessing(true);
             const body = {
                 customer_data: {
                     name,
@@ -49,7 +47,6 @@ export const OrderForm = () => {
                 ],
                 coupon
             };
-            console.log(body)
             const response = await fetch(`${SERVER_URL}/api/order`, {
                 method: 'POST',
                 headers: {
@@ -58,56 +55,16 @@ export const OrderForm = () => {
                 body: JSON.stringify(body)
             })
             if (response.ok) {
-                formik.resetForm();
                 dispatch(resetCart());
                 alert('Order placed successfully');
             } else {
                 alert('Something went wrong');
             }
-            setIsProcessing(false);
-        },
-    });
-    return (
-        <div className="w-96 border-r-2 px-8">
-            <div className="mb-4 text-center text-2xl">Order placement</div>
-            <div className="">
-                <form onSubmit={formik.handleSubmit}>
-                    {
-                        fields.map((field, index) => (
-                            <div className="" key={index}>
-                                <div className="mt-5">
-                                    <label htmlFor="name">{field}</label>
-                                </div>
-                                <input
-                                    id={field.toLowerCase()}
-                                    name={field.toLowerCase()}
-                                    type="text"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values[field.toLowerCase()]}
-                                    className={clsx(
-                                        "w-full rounded-md border-2 p-1 outline-0",
-                                        {
-                                            ["border-red-600"]: formik.touched[field.toLowerCase()] && formik.errors[field.toLowerCase()],
-                                        }
-                                    )}
-                                />
-                                {formik.touched[field.toLowerCase()] && formik.errors[field.toLowerCase()] ? (
-                                    <div className="text-red-600">{formik.errors[field.toLowerCase()]}</div>
-                                ) : null}
-                            </div>
-                        ))
-                    }
+        };
 
-                    <Button className="mt-5 w-full" type="submit">
-                        {
-                            isProcessing
-                                ? <Loader className="mx-auto border-white"/>
-                                : "Submit"
-                        }
-                    </Button>
-                </form>
-            </div>
+    return (
+        <div className="border-r-2">
+            <Form title="Order Placement" fields={fields} initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}/>
         </div>
     );
 };

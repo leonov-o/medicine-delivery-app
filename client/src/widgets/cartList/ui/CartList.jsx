@@ -69,7 +69,7 @@ export const CartList = () => {
                                placeholder="Coupon code" onChange={(e) => checkCoupon(e.target.value)}/>
                     </div>
                     <div className="font-medium text-right text-3xl ml-7">
-                        Total amount: {calcTotalAmount() * discount} UAH
+                        Total amount: {(calcTotalAmount() * discount).toFixed(2)} UAH
                     </div>
                 </div>
 

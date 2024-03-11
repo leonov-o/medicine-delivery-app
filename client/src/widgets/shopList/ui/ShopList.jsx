@@ -7,10 +7,6 @@ export const ShopList = () => {
     const {shops, isLoading, error} = useSelector(state => state.shops);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchAllShops);
-    }, []);
-
     if (error) {
         return <div>{error}</div>
     }
