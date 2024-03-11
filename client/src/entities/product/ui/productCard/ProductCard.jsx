@@ -1,7 +1,8 @@
 import React from 'react';
-import {SERVER_URL} from "../../../../app/config.js";
 import {textCut} from "../../../../shared/";
 import {AddToCart} from "../../../../features/";
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const ProductCard = ({product}) => {
     const {name, description, price, available, image} = product;

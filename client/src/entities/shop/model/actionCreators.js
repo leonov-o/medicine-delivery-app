@@ -1,5 +1,6 @@
 import {allShopsFetching, allShopsFetchingError, allShopsFetchingSuccess} from "./slice.js";
-import {SERVER_URL} from "../../../app/config";
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const fetchAllShops = async (dispatch) => {
     try {
