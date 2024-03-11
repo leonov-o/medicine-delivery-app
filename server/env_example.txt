@@ -1,2 +1,2 @@
 PORT=5000
-DB_URL=""
+DB_URL=mongodb+srv://testuser:KYpsij9XI1bs06vi@cluster0.w5k5lox.mongodb.net/medicine-delivery-app?retryWrites=true&w=majority&appName=Cluster0
