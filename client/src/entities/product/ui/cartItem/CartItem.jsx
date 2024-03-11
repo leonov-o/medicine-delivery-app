@@ -41,7 +41,7 @@ export const CartItem = ({item}) => {
                 {item.price} UAH
             </div>
             <div className="w-48">
-                <input className="rounded-md border-2 p-1 outline-0 text-right" type="number" value={item.quantity}
+                <input className="rounded-md border-2 p-1 outline-0 text-right" type="number" min={1} value={item.quantity}
                        onChange={(e) => onChangeQuantity(Number(e.target.value))}/>
             </div>
             <div className="w-24 text-center">
