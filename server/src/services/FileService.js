@@ -5,7 +5,7 @@ class FileService {
     saveFile(file) {
         try {
             const fileName = uuid.v4() + '.jpg';
-            const filePath = path.resolve('static', fileName);
+            const filePath = path.join(process.cwd(), 'static', fileName);
             file.mv(filePath);
             return fileName;
         } catch (e) {
