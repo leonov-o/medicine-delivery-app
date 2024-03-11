@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import express from 'express';
 import mongoose from 'mongoose';
-import router from './routes/router.js';
+import router from './src/routes/router.js';
 import fileUpload from 'express-fileupload';
 import cors from 'cors'
 
