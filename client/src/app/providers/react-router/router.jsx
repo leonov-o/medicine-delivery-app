@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
-import {CartPage, LayoutPage, ShopPage} from "../../../pages";
+import {CartPage, CouponPage, HistoryPage, LayoutPage, ShopPage} from "../../../pages";
 
 export const router = createBrowserRouter([
     {
@@ -13,11 +13,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/coupons",
-                element: <div>Coupons</div>
+                element: <CouponPage/>
             },
             {
                 path: "/history",
-                element: <div>History</div>
+                element: <HistoryPage/>
             },
             {
                 path: "/shopping-cart",
