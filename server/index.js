@@ -8,7 +8,7 @@ import cors from 'cors'
 const app = express();
 app.use(cors(
     {
-        origin: ["https://medicine-delivery-app-chi.vercel.app/"],
+        origin: ["*"],
         methods: ["POST", "GET"],
         credentials: true
     }
