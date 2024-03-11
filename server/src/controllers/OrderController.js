@@ -30,7 +30,7 @@ class OrderController {
                 }
             }
 
-            const order = await OrderService.create({...req.body, total_price: totalPrice});
+            const order = await OrderService.create({...req.body, total_price: Number(totalPrice.toFixed(2))});
             res.status(200).json(order);
         } catch (e) {
             res.status(500).json(e.message);
