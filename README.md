@@ -1,18 +1,57 @@
-How to run
+**#  medicine-delivery-app**
 
-Environment variables must be set before startup. Check .env_example.
+Web application where users can order medicines delivery. Test task from ElifTech.
 
-Client
+**### Environment Variables**
 
-cd .\client\
-npm install
-npm run dev
+**Important:**  Set the required environment variables before starting the application. You can find an example configuration file in `.env_example`. Rename it to `.env` and populate it with your specific values.
 
-Server
+**### Running the Application**
 
-cd .\server\
-npm install
-npm run dev
+The project consists of a client-side and server-side application. Follow the steps below to run each component:
 
-Database structure
+**Client**
+
+1. Navigate to the client directory:
+
+   ```bash
+   cd ./client/
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+**Server**
+
+1. Navigate to the server directory:
+
+   ```bash
+   cd ./server/
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+**## Database Structure**
+
+The application uses a database with the following structure:
+
 ![img.png](img.png)
