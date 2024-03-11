@@ -4,8 +4,9 @@ import * as Yup from 'yup';
 import {Button, Loader} from "../../../shared/";
 import clsx from "clsx";
 import {useDispatch, useSelector} from "react-redux";
-import {SERVER_URL} from "../../../app/config.js";
 import {resetCart} from "../../../entities/product/";
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const OrderForm = () => {
     const [isProcessing, setIsProcessing] = useState(false);

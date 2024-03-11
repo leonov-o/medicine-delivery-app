@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {SERVER_URL} from "../../../../app/config.js";
 import {textCut} from "../../../../shared/index.js";
 import {useDispatch, useSelector} from "react-redux";
 import {changeQuantity, deleteFromCart} from "../../model/index.js";
 import {XMarkIcon} from "@heroicons/react/24/outline/index.js";
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const CartItem = ({item}) => {
     const [totalPrice, setTotalPrice] = useState(item.price * item.quantity);

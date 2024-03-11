@@ -1,5 +1,6 @@
-import {SERVER_URL} from "../../../app/config";
 import {productsFetching, productsFetchingError, productsFetchingSuccess} from "./slice.js";
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const fetchProducts = (shopId) => {
     return async dispatch => {
