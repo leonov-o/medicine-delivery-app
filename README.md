@@ -2,6 +2,10 @@
 
 Web application where users can order medicines delivery. Test task from ElifTech.
 
+**### Production Version**
+
+**Due to the use of free hosting, the server is suspended during downtime, which can cause requests to be delayed by 50 seconds or more.**
+
 **### Environment Variables**
 
 **Important:**  Set the required environment variables before starting the application. You can find an example configuration file in `.env_example`. Rename it to `.env` and populate it with your specific values.
